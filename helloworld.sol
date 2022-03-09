@@ -3,28 +3,26 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 contract Hello{
- string  helloWorld;
- string  greet;
- string day;
+ string  helloWorld = "Hello World";
+ string  greet  = "Good Morning ";
+ string name;
 
- //state variable: they are outside a function and they store data on the blockchsin
- int public stateVariable = 123;
-
- constructor(){
-     helloWorld = "Hello World";
-     greet = "Good Morning";
-     day = "How was your day";
+ 
+ constructor(string memory initialName){
+     helloWorld ;
+     greet;
+     name = initialName;
  }
 
     function helloo() view public returns(string memory) {
         return helloWorld;
     }
- 
-    function greetMe() view public returns(string memory) {
-        return greet;
-    }
-    function you() view public returns(string memory) {
-        return day;
+    function setName(string memory newName) public {
+        name = newName;
     } 
+    function greetMe() view public returns(string memory) {
+        return string(abi.encodePacked(greet, name));
+    }
+    
 
 }
